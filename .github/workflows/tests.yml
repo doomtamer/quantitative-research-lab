@@ -11,6 +11,21 @@ permissions:
   contents: read
 
 jobs:
+  research-safety:
+    name: Research Safety Guard
+    if: github.event_name == 'pull_request'
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout PR merge commit and its parents
+        uses: actions/checkout@v6
+        with:
+          fetch-depth: 2
+          persist-credentials: false
+
+      - name: Check historical research artifacts against the base
+        run: python3 scripts/check_research_safety.py --base HEAD^1 --head HEAD
+
   tests:
     name: Python 3.12 - pytest
     runs-on: ubuntu-latest
