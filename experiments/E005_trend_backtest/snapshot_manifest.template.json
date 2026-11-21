@@ -1,0 +1,26 @@
+{
+  "experiment_id": "E005_trend_backtest",
+  "protocol_version": "1.1",
+  "protocol_sha256": null,
+  "code_revision": null,
+  "market": "Binance USD-M BTCUSDT perpetual",
+  "exclusive_cutoff_utc": "2025-09-13T00:00:00Z",
+  "snapshot_id": null,
+  "status": "template_pending_source_audit",
+  "sources": [
+    {"role": "daily_close", "path": null, "sha256": null, "provenance": null, "coverage_utc": null},
+    {"role": "hourly_traded_open", "path": null, "sha256": null, "provenance": null, "coverage_utc": null},
+    {"role": "funding_events", "path": null, "sha256": null, "provenance": null, "coverage_utc": null},
+    {"role": "independent_funding_calendar", "path": null, "sha256": null, "provenance": null, "coverage_utc": null},
+    {"role": "hourly_mark", "path": null, "sha256": null, "provenance": null, "coverage_utc": null}
+  ],
+  "expected_snapshot_checks": [
+    "UTC, monotonic order, unique timestamps and complete daily and hourly windows",
+    "endTime and every observed candle or settlement strictly before the cutoff",
+    "request ranges and retrieval timestamps, source availability evidence and declared proxy limits",
+    "funding times reconciled to the independent calendar and finite funding event mark prices",
+    "separate sealed final snapshot, inaccessible during development and validation"
+  ],
+  "approved_execution_reference": null,
+  "recorded_at_utc": null
+}
