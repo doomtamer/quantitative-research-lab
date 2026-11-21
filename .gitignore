@@ -61,3 +61,8 @@ dist/
 # Research predictions - keep locally
 reports/**/*predictions.csv
 
+# Local pipeline inputs, run outputs and approval signatures
+/data/research/
+/reports/research_pipeline/
+/experiments/*/approval.sig
+
