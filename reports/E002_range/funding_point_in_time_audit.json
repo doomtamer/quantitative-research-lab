@@ -1,0 +1,57 @@
+{
+  "experiment": "E002_range",
+  "phase": "funding_source_to_feature_audit_development_only",
+  "generated_utc": "2026-11-19T23:08:34.685363+00:00",
+  "source_feature_sha256": "8fdea00914b36b8afff0677371cef1298557b90e1f1caaf600e8b530102d9c47",
+  "n_development_days": 1716,
+  "n_raw_events_dev": 5148,
+  "development_first": "2021-01-01",
+  "development_last": "2025-09-12",
+  "source_counts_dev": {
+    "binance_vision": 5148
+  },
+  "feature_comparisons": {
+    "funding_mean": {
+      "mismatch_count": 0,
+      "nan_positions_identical": true,
+      "max_absolute_difference": 0.0
+    },
+    "funding_std": {
+      "mismatch_count": 0,
+      "nan_positions_identical": true,
+      "max_absolute_difference": 0.0
+    },
+    "funding_mean_3d": {
+      "mismatch_count": 0,
+      "nan_positions_identical": true,
+      "max_absolute_difference": 0.0
+    },
+    "funding_mean_7d": {
+      "mismatch_count": 0,
+      "nan_positions_identical": true,
+      "max_absolute_difference": 0.0
+    },
+    "funding_mean_14d": {
+      "mismatch_count": 0,
+      "nan_positions_identical": true,
+      "max_absolute_difference": 0.0
+    },
+    "funding_mean_30d": {
+      "mismatch_count": 0,
+      "nan_positions_identical": true,
+      "max_absolute_difference": 0.0
+    },
+    "funding_z_30d": {
+      "mismatch_count": 0,
+      "nan_positions_identical": true,
+      "max_absolute_difference": 0.0
+    }
+  },
+  "reconstruction_passed": true,
+  "holdout_labels_read": false,
+  "limitations": [
+    "Timestamp checks verify that source events are attributed to days <= feature day t, not independently that vendor publication occurred on time.",
+    "This script does not verify exchange-source payload authenticity or intraday ingestion timestamps.",
+    "Code-level chronological CV and fold-local preprocessing were audited separately."
+  ]
+}

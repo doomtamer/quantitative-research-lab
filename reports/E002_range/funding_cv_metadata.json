@@ -1,0 +1,79 @@
+{
+  "experiment": "E002_range",
+  "phase": "M2_market_plus_funding_cv_development_only",
+  "created_utc": "2026-11-19T22:50:54.502641+00:00",
+  "holdout_evaluated": false,
+  "n_development": 1716,
+  "n_holdout_reserved": 429,
+  "n_cv_predictions": 1030,
+  "source_feature_sha256": "8fdea00914b36b8afff0677371cef1298557b90e1f1caaf600e8b530102d9c47",
+  "development_file_sha256": "4328ccef9a76ae271ff9c36a50950796bf3c855fb22edd5ac898aeb49a374072",
+  "m1_prediction_sha256": "4e2d8dfbd24ae7df2697bb7da115ebe2b1999e736a4fa27c6196a9287608ecf0",
+  "m1_metadata_sha256": "8bd0b463a5b25e05ad8f38d038b408b8e63ebe15d3291359f056af09a13f087a",
+  "baseline_prediction_sha256": "c13392f4350ea9a7d3b4c81f08646772ed1be8098a950c3e3b482baae0379b7d",
+  "target": "(high[t+1] - low[t+1]) / close[t]",
+  "m1_features": [
+    "ret_1d",
+    "ret_3d",
+    "ret_7d",
+    "ret_14d",
+    "ret_30d",
+    "vol_7d",
+    "vol_14d",
+    "vol_30d",
+    "atr_14_pct",
+    "candle_body",
+    "candle_range",
+    "volume_z_30d",
+    "taker_buy_imbalance",
+    "dist_ma_30d",
+    "e002_range_today",
+    "e002_range_mean_7"
+  ],
+  "m2_incremental_funding_features": [
+    "funding_mean",
+    "funding_std",
+    "funding_mean_3d",
+    "funding_mean_7d",
+    "funding_mean_14d",
+    "funding_mean_30d",
+    "funding_z_30d"
+  ],
+  "m2_total_features": 23,
+  "ridge_alpha": 10.0,
+  "training_preprocessing": "SimpleImputer(median) + StandardScaler fit only on each fold's training rows",
+  "prediction_constraint": "clip negative Ridge predictions to 0 (same as M1)",
+  "label_purge_days": 1,
+  "cv_folds": [
+    {
+      "train_stop_exclusive": 685,
+      "validation_start": 686,
+      "validation_stop_exclusive": 892
+    },
+    {
+      "train_stop_exclusive": 891,
+      "validation_start": 892,
+      "validation_stop_exclusive": 1098
+    },
+    {
+      "train_stop_exclusive": 1097,
+      "validation_start": 1098,
+      "validation_stop_exclusive": 1304
+    },
+    {
+      "train_stop_exclusive": 1303,
+      "validation_start": 1304,
+      "validation_stop_exclusive": 1510
+    },
+    {
+      "train_stop_exclusive": 1509,
+      "validation_start": 1510,
+      "validation_stop_exclusive": 1716
+    }
+  ],
+  "primary_metric": "pooled daily MAE",
+  "primary_comparison": "M2_market_funding_ridge versus M1_market_ridge",
+  "secondary_comparison": "M2_market_funding_ridge versus B2_mean_7",
+  "pooled_mae_improvement_m2_vs_m1": 0.00021158441028268013,
+  "caution": "Exploratory development CV after prior E002 results were seen; no holdout inspected. Feature publication timing requires a separate point-in-time audit."
+}

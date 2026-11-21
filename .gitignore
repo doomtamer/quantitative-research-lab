@@ -1,0 +1,63 @@
+.env
+.venv/
+__pycache__/
+*.py[cod]
+.ipynb_checkpoints/
+.pytest_cache/
+.ruff_cache/
+data/raw/*
+data/interim/*
+data/processed/*
+!data/raw/.gitkeep
+!data/interim/.gitkeep
+!data/processed/.gitkeep
+mlruns/
+*.log
+
+# Additional secrets and local configuration
+.env.*
+!.env.example
+*.pem
+*.p12
+*.key
+.vscode/
+
+# Local datasets and databases
+data_btc/
+*.parquet
+*.sqlite
+*.db
+
+# Generated prediction-level research data
+reports/**/cv_predictions.csv
+reports/**/holdout_predictions.csv
+
+# Temporary artifacts
+*.zip
+.coverage
+.mypy_cache/
+Thumbs.db
+
+# Python build artifacts
+*.egg-info/
+build/
+dist/
+
+# Temporary project files
+/README_FIX.md
+
+# Duplicate folders from extracted packages
+/config/docs/
+/config/scripts/
+/data/docs/
+/data/experiments/
+/data/scripts/
+/data/src/
+/data/tests/
+/notebooks/docs/
+/notebooks/scripts/
+/notebooks/tests/
+
+# Research predictions - keep locally
+reports/**/*predictions.csv
+

@@ -1,0 +1,51 @@
+{
+  "experiment": "E002_range",
+  "phase": "baseline_cv_development_only",
+  "created_utc": "2026-11-19T22:18:05.324562+00:00",
+  "development_file_sha256": "4328ccef9a76ae271ff9c36a50950796bf3c855fb22edd5ac898aeb49a374072",
+  "source_feature_sha256": "8fdea00914b36b8afff0677371cef1298557b90e1f1caaf600e8b530102d9c47",
+  "n_development": 1716,
+  "n_holdout_reserved": 429,
+  "holdout_evaluated": false,
+  "n_folds": 5,
+  "n_validation_predictions": 1030,
+  "validation_fold_indices": [
+    {
+      "train_stop_exclusive": 685,
+      "validation_start": 686,
+      "validation_stop_exclusive": 892
+    },
+    {
+      "train_stop_exclusive": 891,
+      "validation_start": 892,
+      "validation_stop_exclusive": 1098
+    },
+    {
+      "train_stop_exclusive": 1097,
+      "validation_start": 1098,
+      "validation_stop_exclusive": 1304
+    },
+    {
+      "train_stop_exclusive": 1303,
+      "validation_start": 1304,
+      "validation_stop_exclusive": 1510
+    },
+    {
+      "train_stop_exclusive": 1509,
+      "validation_start": 1510,
+      "validation_stop_exclusive": 1716
+    }
+  ],
+  "training_label_purge_days": 1,
+  "primary_models": [
+    "B0_train_mean",
+    "B1_persistence",
+    "B2_mean_7"
+  ],
+  "exploratory_models": [
+    "B3_mean_30_exploratory"
+  ],
+  "target": "(high[t+1]-low[t+1])/close[t]",
+  "units": "fraction; 0.04 means 4%",
+  "methodology": "E001-matched expanding-window validation boundaries; B0 fitted on earlier known labels with 1-row gap; others use observed data through t"
+}

@@ -1,0 +1,119 @@
+{
+  "status": "PASS",
+  "generated_utc": "2026-11-21T13:22:02.937307+00:00",
+  "scope": "DEV ONLY: 14 E001 market predictors + 2 E002 range predictors + first 1715 labels",
+  "n_development": 1716,
+  "n_holdout_reserved": 429,
+  "holdout_rows_parsed": false,
+  "full_csv_bytes_hashed_for_source_identity": true,
+  "source_sha256": "8fdea00914b36b8afff0677371cef1298557b90e1f1caaf600e8b530102d9c47",
+  "development_first_feature_day": "2021-01-01",
+  "development_last_feature_day": "2025-09-12",
+  "development_last_label_day": "2025-09-13",
+  "first_reserved_holdout_feature_day_derived": "2025-09-13",
+  "model_input_checks": {
+    "ret_1d": {
+      "mismatches": 0,
+      "max_abs_difference": 0.0,
+      "matching_missing_values": 1
+    },
+    "ret_3d": {
+      "mismatches": 0,
+      "max_abs_difference": 0.0,
+      "matching_missing_values": 3
+    },
+    "ret_7d": {
+      "mismatches": 0,
+      "max_abs_difference": 0.0,
+      "matching_missing_values": 7
+    },
+    "ret_14d": {
+      "mismatches": 0,
+      "max_abs_difference": 0.0,
+      "matching_missing_values": 14
+    },
+    "ret_30d": {
+      "mismatches": 0,
+      "max_abs_difference": 0.0,
+      "matching_missing_values": 30
+    },
+    "vol_7d": {
+      "mismatches": 0,
+      "max_abs_difference": 0.0,
+      "matching_missing_values": 7
+    },
+    "vol_14d": {
+      "mismatches": 0,
+      "max_abs_difference": 0.0,
+      "matching_missing_values": 14
+    },
+    "vol_30d": {
+      "mismatches": 0,
+      "max_abs_difference": 0.0,
+      "matching_missing_values": 30
+    },
+    "atr_14_pct": {
+      "mismatches": 0,
+      "max_abs_difference": 0.0,
+      "matching_missing_values": 13
+    },
+    "candle_body": {
+      "mismatches": 0,
+      "max_abs_difference": 0.0,
+      "matching_missing_values": 0
+    },
+    "candle_range": {
+      "mismatches": 0,
+      "max_abs_difference": 0.0,
+      "matching_missing_values": 0
+    },
+    "volume_z_30d": {
+      "mismatches": 0,
+      "max_abs_difference": 0.0,
+      "matching_missing_values": 29
+    },
+    "taker_buy_imbalance": {
+      "mismatches": 0,
+      "max_abs_difference": 0.0,
+      "matching_missing_values": 0
+    },
+    "dist_ma_30d": {
+      "mismatches": 0,
+      "max_abs_difference": 0.0,
+      "matching_missing_values": 29
+    },
+    "e002_range_today": {
+      "mismatches": 0,
+      "max_abs_difference": 0.0,
+      "matching_missing_values": 1
+    },
+    "e002_range_mean_7": {
+      "mismatches": 0,
+      "max_abs_difference": 0.0,
+      "matching_missing_values": 7
+    }
+  },
+  "target_checks_excluding_last_development_row": {
+    "target_range": {
+      "mismatches": 0,
+      "max_abs_difference": 0.0,
+      "matching_missing_values": 0
+    },
+    "target_close_ret": {
+      "mismatches": 0,
+      "max_abs_difference": 0.0,
+      "matching_missing_values": 0
+    }
+  },
+  "n_total_feature_or_target_mismatches": 0,
+  "funding_audit_status_from_existing_report": "see separate report",
+  "label_purge_protocol_E002": 1,
+  "boundary_warning": "Last development label day equals first reserved holdout FEATURE day. Before final static fit, conservatively exclude last development label row and use a one-day purge.",
+  "remaining_cautions": [
+    "Arithmetic reconstruction is not an independent proof of Binance vendor publication times.",
+    "Model features assume forecasting after UTC day t close; no same-day intraday forecast is claimed.",
+    "All market predictors checked against causal current/past-only OHLCV formulas; ETF and macro are not inputs to E001-E003 tested models.",
+    "E001 CV used adjacent train/validation blocks without an explicit purge; review its as-of model refit convention separately.",
+    "No holdout labels or forecasts evaluated by this script."
+  ]
+}

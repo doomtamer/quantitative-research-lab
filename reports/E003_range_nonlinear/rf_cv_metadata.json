@@ -1,0 +1,87 @@
+{
+  "experiment": "E003_range_nonlinear",
+  "phase": "exploratory_cv_development_only",
+  "generated_utc": "2026-11-21T11:32:12.387233+00:00",
+  "holdout_evaluated": false,
+  "n_development": 1716,
+  "n_holdout_reserved": 429,
+  "n_cv_predictions": 1030,
+  "target": "(high[t+1] - low[t+1]) / close[t]",
+  "source_sha256": "8fdea00914b36b8afff0677371cef1298557b90e1f1caaf600e8b530102d9c47",
+  "development_file_sha256": "4328ccef9a76ae271ff9c36a50950796bf3c855fb22edd5ac898aeb49a374072",
+  "baseline_prediction_sha256": "c13392f4350ea9a7d3b4c81f08646772ed1be8098a950c3e3b482baae0379b7d",
+  "m1_prediction_sha256": "4e2d8dfbd24ae7df2697bb7da115ebe2b1999e736a4fa27c6196a9287608ecf0",
+  "funding_pit_sha256": "052578c6e7d65b018a967e0f2c2a413f1a355f6df99554524dc3ff3c2972e10a",
+  "e002_m2_predictions_sha256": "b12811ad9815689178dd22a566ffe5169e748b41f789c2b8facf5ebc342b66f7",
+  "e002_m2_metadata_sha256": "7c4ce481c525dcba597526b25ddcc53c2ad8736480100e8e67428e66720a5dee",
+  "market_features": [
+    "ret_1d",
+    "ret_3d",
+    "ret_7d",
+    "ret_14d",
+    "ret_30d",
+    "vol_7d",
+    "vol_14d",
+    "vol_30d",
+    "atr_14_pct",
+    "candle_body",
+    "candle_range",
+    "volume_z_30d",
+    "taker_buy_imbalance",
+    "dist_ma_30d",
+    "e002_range_today",
+    "e002_range_mean_7"
+  ],
+  "funding_features_added": [
+    "funding_mean",
+    "funding_std",
+    "funding_mean_3d",
+    "funding_mean_7d",
+    "funding_mean_14d",
+    "funding_mean_30d",
+    "funding_z_30d"
+  ],
+  "rf_parameters": {
+    "n_estimators": 300,
+    "max_depth": 6,
+    "min_samples_leaf": 20,
+    "max_features": 0.8,
+    "bootstrap": true,
+    "random_state": 2026,
+    "n_jobs": 1
+  },
+  "preprocessing": "Median imputer fitted only on each training fold; no scaler for RF",
+  "label_purge_days": 1,
+  "folds": [
+    {
+      "train_stop_exclusive": 685,
+      "validation_start": 686,
+      "validation_stop_exclusive": 892
+    },
+    {
+      "train_stop_exclusive": 891,
+      "validation_start": 892,
+      "validation_stop_exclusive": 1098
+    },
+    {
+      "train_stop_exclusive": 1097,
+      "validation_start": 1098,
+      "validation_stop_exclusive": 1304
+    },
+    {
+      "train_stop_exclusive": 1303,
+      "validation_start": 1304,
+      "validation_stop_exclusive": 1510
+    },
+    {
+      "train_stop_exclusive": 1509,
+      "validation_start": 1510,
+      "validation_stop_exclusive": 1716
+    }
+  ],
+  "primary_metric": "pooled MAE",
+  "primary_comparison": "M3_market_rf vs B2_mean_7",
+  "secondary_comparison": "M4_market_funding_rf vs M3_market_rf",
+  "research_limitation": "Exploratory: E002 development CV results were seen before E003 architecture chosen; same CV dates reused. No independent confirmation or holdout evaluation.",
+  "pit_limitation": "Funding event timestamps and feature reconstruction checked; actual vendor availability not independently verified."
+}

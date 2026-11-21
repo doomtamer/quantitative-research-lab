@@ -1,0 +1,12 @@
+orchestrator: langgraph
+mode: supervised
+agents:
+  research_director: {enabled: true, can: [decompose_task, assign_work, summarize]}
+  data_engineer: {enabled: true, can: [inspect_data, propose_cleaning, build_pipeline]}
+  quant_researcher: {enabled: true, can: [formulate_hypotheses, propose_tests, analyze_results]}
+  crypto_researcher: {enabled: true, can: [explain_funding, open_interest, market_microstructure]}
+  quant_developer: {enabled: true, can: [draft_code, add_tests, implement_approved_method]}
+  research_auditor: {enabled: true, can: [check_leakage, check_bias, challenge_claims]}
+human_gates:
+  - approve_hypothesis_and_methodology
+  - approve_audit_and_final_conclusion

@@ -1,0 +1,173 @@
+{
+  "created_utc": "2026-11-21T12:47:21.358197+00:00",
+  "scope": "development CV predictions only; final holdout not read",
+  "n_cv_predictions": 1030,
+  "n_development": 1716,
+  "n_holdout_reserved": 429,
+  "source_feature_sha256": "8fdea00914b36b8afff0677371cef1298557b90e1f1caaf600e8b530102d9c47",
+  "inputs_sha256": {
+    "reports\\E001_funding_rate\\cv_predictions.csv": "c2fe59079c7c6a1427c753ab20224d9d45abc49a3861798544cf77e7ce16c0b5",
+    "reports\\E001_funding_rate\\cv_metadata.json": "bd91762fb352c0c419474c172af3d88307c8bc4f2583e2e3b081376a1321570d",
+    "reports\\E001_funding_rate\\funding_audit.json": "f366175d1855d05db70880eb35a71cc7eeea0a825457038ae5814739b55c0b8f",
+    "reports\\E002_range\\baseline_cv_predictions.csv": "c13392f4350ea9a7d3b4c81f08646772ed1be8098a950c3e3b482baae0379b7d",
+    "reports\\E002_range\\ridge_cv_predictions.csv": "4e2d8dfbd24ae7df2697bb7da115ebe2b1999e736a4fa27c6196a9287608ecf0",
+    "reports\\E002_range\\funding_cv_predictions.csv": "b12811ad9815689178dd22a566ffe5169e748b41f789c2b8facf5ebc342b66f7",
+    "reports\\E002_range\\baseline_cv_metadata.json": "8ecc26ffdfa31f5f52e2842d97f323fdf4e86000d426121ec22c3f71b4863015",
+    "reports\\E002_range\\ridge_cv_metadata.json": "8bd0b463a5b25e05ad8f38d038b408b8e63ebe15d3291359f056af09a13f087a",
+    "reports\\E002_range\\funding_cv_metadata.json": "7c4ce481c525dcba597526b25ddcc53c2ad8736480100e8e67428e66720a5dee",
+    "reports\\E002_range\\funding_point_in_time_audit.json": "052578c6e7d65b018a967e0f2c2a413f1a355f6df99554524dc3ff3c2972e10a",
+    "reports\\E002_range\\target_audit.json": "086fee331ef14556398cd843a671a65703e02f5a18ea7f67232cbf4f5f831ad4",
+    "reports\\E003_range_nonlinear\\rf_cv_predictions.csv": "52fee68fd71d2d7c705bd9f211991652620739f58bdd14f773c343a3c6744470",
+    "reports\\E003_range_nonlinear\\rf_cv_metadata.json": "1e028b16dbb2d8469fe604f771fd4b00d25e9706bf51d5f12d88d4dfe8fa62bd"
+  },
+  "python": "3.12.16",
+  "pandas": "3.1.1",
+  "numpy": "2.5.5",
+  "statsmodels": "0.15.0",
+  "matplotlib": "3.11.2",
+  "return_models": {
+    "M0_zero": {
+      "mae": 0.01699912740010553,
+      "rmse": 0.024548412652283056
+    },
+    "M0_mean": {
+      "mae": 0.016991276620426706,
+      "rmse": 0.02450385126305406
+    },
+    "M1_market": {
+      "mae": 0.01732899669819699,
+      "rmse": 0.024737312406643158
+    },
+    "M2_market_funding": {
+      "mae": 0.017547868488856987,
+      "rmse": 0.024937123651708172
+    }
+  },
+  "range_models": {
+    "B0_train_mean": {
+      "mae": 0.024971610239591536,
+      "rmse": 0.029245158072547864
+    },
+    "B1_persistence": {
+      "mae": 0.01905210590650781,
+      "rmse": 0.02675468589581425
+    },
+    "B2_mean_7": {
+      "mae": 0.01590324074333701,
+      "rmse": 0.02236504809830922
+    },
+    "B3_mean_30_exploratory": {
+      "mae": 0.016401045614455118,
+      "rmse": 0.022879212464491958
+    },
+    "M1_market_ridge": {
+      "mae": 0.016550489886740523,
+      "rmse": 0.022138436951942456
+    },
+    "M2_market_funding_ridge": {
+      "mae": 0.016338905476457843,
+      "rmse": 0.021938672408235337
+    },
+    "M3_market_rf": {
+      "mae": 0.01683342746226583,
+      "rmse": 0.022332931792586806
+    },
+    "M4_market_funding_rf": {
+      "mae": 0.01661484493063034,
+      "rmse": 0.02203686163677815
+    }
+  },
+  "paired_hac_7_exploratory": {
+    "E001: M1 -> M2": {
+      "reference": "M1_market",
+      "candidate": "M2_market_funding",
+      "delta_mae": -0.00021887179065999566,
+      "p": 0.004908269546719648,
+      "t": -2.8129931583149874,
+      "ci_low": -0.00037137156679963815,
+      "ci_high": -6.637201452035311e-05,
+      "winning_days": 491,
+      "n": 1030,
+      "hac_lag": 7,
+      "p_holm_exploratory": 0.03435788682703753
+    },
+    "E001: Zero -> M1": {
+      "reference": "M0_zero",
+      "candidate": "M1_market",
+      "delta_mae": -0.0003298692980914578,
+      "p": 0.012109711433462459,
+      "t": -2.5089310642588316,
+      "ci_low": -0.0005875614894294281,
+      "ci_high": -7.217710675348744e-05,
+      "winning_days": 499,
+      "n": 1030,
+      "hac_lag": 7,
+      "p_holm_exploratory": 0.07265826860077476
+    },
+    "E002: M1 -> M2": {
+      "reference": "M1_market_ridge",
+      "candidate": "M2_market_funding_ridge",
+      "delta_mae": 0.00021158441028267864,
+      "p": 0.06959481459534039,
+      "t": 1.8145388018339634,
+      "ci_low": -1.6957312509393506e-05,
+      "ci_high": 0.00044012613307475076,
+      "winning_days": 544,
+      "n": 1030,
+      "hac_lag": 7,
+      "p_holm_exploratory": 0.27837925838136157
+    },
+    "E002: B2 -> M2": {
+      "reference": "B2_mean_7",
+      "candidate": "M2_market_funding_ridge",
+      "delta_mae": -0.00043566473312083514,
+      "p": 0.16027690594334854,
+      "t": -1.404140868193816,
+      "ci_low": -0.0010437854748448965,
+      "ci_high": 0.0001724560086032265,
+      "winning_days": 485,
+      "n": 1030,
+      "hac_lag": 7,
+      "p_holm_exploratory": 0.27837925838136157
+    },
+    "E003: M3 -> M4": {
+      "reference": "M3_market_rf",
+      "candidate": "M4_market_funding_rf",
+      "delta_mae": 0.00021858253163549552,
+      "p": 0.07748219391246743,
+      "t": 1.7654855663761981,
+      "ci_low": -2.4078126607387953e-05,
+      "ci_high": 0.0004612431898783788,
+      "winning_days": 560,
+      "n": 1030,
+      "hac_lag": 7,
+      "p_holm_exploratory": 0.27837925838136157
+    },
+    "E003: B2 -> M4": {
+      "reference": "B2_mean_7",
+      "candidate": "M4_market_funding_rf",
+      "delta_mae": -0.0007116041872933304,
+      "p": 0.031106027125715422,
+      "t": -2.155713707941929,
+      "ci_low": -0.0013585911100950445,
+      "ci_high": -6.461726449161578e-05,
+      "winning_days": 475,
+      "n": 1030,
+      "hac_lag": 7,
+      "p_holm_exploratory": 0.15553013562857712
+    },
+    "E003: M2 -> M4": {
+      "reference": "M2_market_funding_ridge",
+      "candidate": "M4_market_funding_rf",
+      "delta_mae": -0.0002759394541724953,
+      "p": 0.13440427534860533,
+      "t": -1.496957660082604,
+      "ci_low": -0.0006372264875424891,
+      "ci_high": 8.534757919749844e-05,
+      "winning_days": 480,
+      "n": 1030,
+      "hac_lag": 7,
+      "p_holm_exploratory": 0.27837925838136157
+    }
+  }
+}

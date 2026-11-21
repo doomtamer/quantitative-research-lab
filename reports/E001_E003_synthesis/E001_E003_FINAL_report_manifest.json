@@ -1,0 +1,24 @@
+{
+  "status": "FINAL_REPORT_POST_HOLDOUT; PRESENTATION_ONLY",
+  "generated_utc": "2026-11-21T13:48:39.214406+00:00",
+  "scope": "CV report and saved final summary; no holdout predictions or labels read by this tool",
+  "n_cv_dates": 1030,
+  "n_holdout_dates": 429,
+  "model_primary": "B2_mean_7",
+  "model_secondary": "M2_market_funding_ridge",
+  "frozen_manifest_sha256": "8c6fffd6f5a8b448241ba65fe89f9bbbdc14576a94e8ee2e3209d242f958abcc",
+  "source_file_sha256": {
+    "development_markdown": "0c31ebf58a74b7bba734c133310fe72f0614959a640422928adb663489a434f4",
+    "development_html": "dc7bc8ffc437f920e6b55a77ed23a9bd7e87755857fc2f484b409b2ca1b6f193",
+    "development_manifest": "90ac14ff9d7b9921462276a35bab2f02d082e6b63f6d03ae5d8639851ba49a9b",
+    "frozen_manifest": "8c6fffd6f5a8b448241ba65fe89f9bbbdc14576a94e8ee2e3209d242f958abcc",
+    "one_time_marker": "b894cf5bac4d254edd40ee456fb58e71bfd919e9955cb76c0b4f803f538111c6",
+    "holdout_summary": "592db57d6c8617c303214088e9e31b3928044c62d0071f35e89d900379cb3288"
+  },
+  "generated_file_sha256": {
+    "E001_E003_FINAL_research_report.md": "a7cd199b480d12a4b1e730ee66a4228ca0051cd047bf10a97d0f96a8000ecc15",
+    "E001_E003_FINAL_research_report.html": "0d0da5c335a16877be6c705f5b9ae1cbd872e0a66ec944fb79399775a468cd39"
+  },
+  "vendor_publication_time_verified": false,
+  "re_evaluation_performed": false
+}

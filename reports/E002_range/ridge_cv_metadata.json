@@ -1,0 +1,66 @@
+{
+  "experiment": "E002_range",
+  "phase": "M1_ridge_cv_development_only",
+  "generated_utc": "2026-11-19T22:29:31.045131+00:00",
+  "holdout_evaluated": false,
+  "n_development": 1716,
+  "n_holdout_reserved": 429,
+  "n_cv_predictions": 1030,
+  "source_feature_sha256": "8fdea00914b36b8afff0677371cef1298557b90e1f1caaf600e8b530102d9c47",
+  "development_file_sha256": "4328ccef9a76ae271ff9c36a50950796bf3c855fb22edd5ac898aeb49a374072",
+  "baseline_prediction_sha256": "c13392f4350ea9a7d3b4c81f08646772ed1be8098a950c3e3b482baae0379b7d",
+  "target": "(high[t+1] - low[t+1]) / close[t]",
+  "feature_list": [
+    "ret_1d",
+    "ret_3d",
+    "ret_7d",
+    "ret_14d",
+    "ret_30d",
+    "vol_7d",
+    "vol_14d",
+    "vol_30d",
+    "atr_14_pct",
+    "candle_body",
+    "candle_range",
+    "volume_z_30d",
+    "taker_buy_imbalance",
+    "dist_ma_30d",
+    "e002_range_today",
+    "e002_range_mean_7"
+  ],
+  "ridge_alpha": 10.0,
+  "preprocessing": "SimpleImputer(median) and StandardScaler both fit ONLY on each training fold",
+  "prediction_constraint": "clip Ridge forecasts to zero when negative; rule fixed before CV",
+  "validation_folds": [
+    {
+      "train_stop_exclusive": 685,
+      "validation_start": 686,
+      "validation_stop_exclusive": 892
+    },
+    {
+      "train_stop_exclusive": 891,
+      "validation_start": 892,
+      "validation_stop_exclusive": 1098
+    },
+    {
+      "train_stop_exclusive": 1097,
+      "validation_start": 1098,
+      "validation_stop_exclusive": 1304
+    },
+    {
+      "train_stop_exclusive": 1303,
+      "validation_start": 1304,
+      "validation_stop_exclusive": 1510
+    },
+    {
+      "train_stop_exclusive": 1509,
+      "validation_start": 1510,
+      "validation_stop_exclusive": 1716
+    }
+  ],
+  "label_purge_days": 1,
+  "primary_baseline": "B2_mean_7",
+  "primary_metric": "pooled daily MAE",
+  "mae_improvement_ridge_over_b2": -0.0006472491434035138,
+  "note": "Exploratory CV after reviewing benchmark CV; not independent confirmation. Do not tune on holdout."
+}

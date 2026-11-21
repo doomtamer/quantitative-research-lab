@@ -1,0 +1,60 @@
+{
+  "status": "FINAL_HOLDOUT_EVALUATED_ONCE",
+  "created_utc": "2026-11-21T13:36:09.945970+00:00",
+  "n_training": 1715,
+  "purged_day": "2025-09-12",
+  "n_holdout": 429,
+  "first_date": "2025-09-13",
+  "last_date": "2026-11-15",
+  "target": "(high[t+1]-low[t+1])/close[t]",
+  "model_primary": "B2_mean_7",
+  "model_secondary": "M2_market_funding_ridge",
+  "model_alpha": 10.0,
+  "n_features": 23,
+  "n_negative_raw_ridge_forecasts": 0,
+  "metrics": {
+    "B2_mean_7": {
+      "MAE": 0.01379781150348301,
+      "RMSE": 0.019973740598893907
+    },
+    "M2_market_funding_ridge": {
+      "MAE": 0.013804715136463735,
+      "RMSE": 0.019023506140199854
+    }
+  },
+  "paired_absolute_loss_HAC": {
+    "7": {
+      "mean_improvement_M2_over_B2": -6.903632980723738e-06,
+      "t": -0.01505086465803178,
+      "p_two_sided": 0.9879916008384967,
+      "ci95": [
+        -0.0009059132455268597,
+        0.0008921059795654122
+      ]
+    },
+    "14": {
+      "mean_improvement_M2_over_B2": -6.903632980723738e-06,
+      "t": -0.014715506899605966,
+      "p_two_sided": 0.9882591479813162,
+      "ci95": [
+        -0.0009264011465229719,
+        0.0009125938805615244
+      ]
+    },
+    "30": {
+      "mean_improvement_M2_over_B2": -6.903632980723738e-06,
+      "t": -0.014321968528534285,
+      "p_two_sided": 0.988573113076969,
+      "ci95": [
+        -0.0009516670555328215,
+        0.000937859789571374
+      ]
+    }
+  },
+  "evaluation_manifest_sha256": "8c6fffd6f5a8b448241ba65fe89f9bbbdc14576a94e8ee2e3209d242f958abcc",
+  "limitations": [
+    "Vendor availability/release timestamps not independently verified",
+    "One terminal test, interpreted conditional on historical data timing",
+    "No tuning, reselection or rerun allowed after viewing final results"
+  ]
+}

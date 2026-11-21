@@ -1,0 +1,39 @@
+{
+  "experiment": "E002_range",
+  "phase": "target_audit_development_only",
+  "generated_utc": "2026-11-19T22:12:26.962875+00:00",
+  "source_feature_sha256": "8fdea00914b36b8afff0677371cef1298557b90e1f1caaf600e8b530102d9c47",
+  "target_definition": "(high[t+1] - low[t+1]) / close[t]",
+  "target_units": "fraction of close[t] (0.05 = 5%)",
+  "not_a_direction_or_realized_variance_target": true,
+  "n_total": 2145,
+  "n_development": 1716,
+  "n_holdout_reserve": 429,
+  "holdout_target_evaluated": false,
+  "dev_first": "2021-01-01",
+  "dev_last_feature_day": "2025-09-12",
+  "dev_last_label_day": "2025-09-13",
+  "target_mismatches": 0,
+  "target_mismatches_high_low_ret": 0,
+  "dev_target_percentiles": {
+    "min": 0.0037395250803148317,
+    "median": 0.038604493301769405,
+    "p90": 0.08362586865799415,
+    "p95": 0.10650560178571486,
+    "max": 0.36705874303730834
+  },
+  "available_baseline_features": [
+    "e002_range_today",
+    "e002_range_mean_7",
+    "e002_range_mean_30",
+    "e002_range_std_30"
+  ],
+  "baseline_missing_dev": {
+    "e002_range_today": 1,
+    "e002_range_mean_7": 7,
+    "e002_range_mean_30": 30,
+    "e002_range_std_30": 30
+  },
+  "warning": "Do not use existing target_large_range: threshold includes target[t] itself; classification needs a past-only cutoff.",
+  "models_trained": false
+}

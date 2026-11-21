@@ -1,0 +1,16 @@
+experiment_id: E001
+title: Czy funding rate wnosi informację o kolejnej świecy BTCUSDT?
+status: draft
+instrument: BTCUSDT
+frequency: 1d
+null_hypothesis: Funding rate nie wnosi stabilnej dodatkowej informacji predykcyjnej.
+targets: [next_day_close_return, next_day_high_low_range, next_day_body_return, next_day_direction]
+candidate_features: [funding_rate, funding_rate_change, open_interest_change, volume, atr, realized_volatility, long_short_ratio, taker_buy_sell_ratio, etf_net_flow, macro_features]
+benchmarks: [zero_return, historical_mean, autoregressive]
+models: [linear_regression, ridge, logistic_regression, random_forest, xgboost_if_installed]
+validation: {chronological_only: true, walk_forward: true, untouched_final_holdout: true, leakage_audit_required: true}
+economic_evaluation: {required_before_profitability_claim: true, include_fees: true, include_slippage: true, include_funding_cashflows: true, report_turnover: true}
+limitations:
+  - Około 2100 obserwacji dziennych to mała próba dla głębokiego uczenia.
+  - Wynik predykcyjny nie dowodzi rentowności strategii.
+  - ETF flows i dane makro wymagają weryfikacji czasu publikacji.

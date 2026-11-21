@@ -1,0 +1,32 @@
+{
+  "raw_events": 6438,
+  "raw_days": 2146,
+  "raw_first": "2021-01-01T00:00:00.002000+00:00",
+  "raw_last": "2026-11-16T16:00:00.004000+00:00",
+  "duplicate_event_timestamps": 0,
+  "event_count_per_day_distribution": {
+    "3": 2146
+  },
+  "interval_hours_distribution_top10": {
+    "8.0": 3329,
+    "8.000001": 719,
+    "7.999999": 716,
+    "7.999998": 409,
+    "8.000002": 408,
+    "8.000003": 181,
+    "7.999997": 178,
+    "8.000004": 152,
+    "7.999996": 150,
+    "7.999995": 62
+  },
+  "events_not_8h_apart": 0,
+  "feature_funding_n_mismatch_days": 0,
+  "sources_all": {
+    "binance_vision": 6390,
+    "binance_api": 48
+  },
+  "sources_2026_11": {
+    "binance_api": 48
+  },
+  "funding_mean_missing": 0
+}

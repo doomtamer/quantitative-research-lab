@@ -1,0 +1,17 @@
+project:
+  name: quantitative-research-lab
+  timezone: UTC
+  instrument: BTCUSDT
+  interval: 1d
+  random_seed: 42
+data:
+  default_input: data/raw/btc_daily_features.csv
+  immutable_raw: true
+research:
+  experiment_id: E001
+  validation_method: expanding_walk_forward
+  prohibit_random_shuffling: true
+agents:
+  enabled: false
+  require_human_approval: true
+  allow_exchange_orders: false

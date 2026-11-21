@@ -1,0 +1,42 @@
+{
+  "phase": "cv",
+  "holdout_evaluated": false,
+  "pooled_mae_improvement_m2_vs_m1": -0.00021887179065999823,
+  "created_utc": "2026-11-18T19:43:19.668158+00:00",
+  "data_sha256": "8fdea00914b36b8afff0677371cef1298557b90e1f1caaf600e8b530102d9c47",
+  "n_total": 2145,
+  "n_development": 1716,
+  "n_holdout": 429,
+  "target": "target_close_ret",
+  "features_M1": [
+    "ret_1d",
+    "ret_3d",
+    "ret_7d",
+    "ret_14d",
+    "ret_30d",
+    "vol_7d",
+    "vol_14d",
+    "vol_30d",
+    "atr_14_pct",
+    "candle_body",
+    "candle_range",
+    "volume_z_30d",
+    "taker_buy_imbalance",
+    "dist_ma_30d"
+  ],
+  "features_M2_incremental": [
+    "funding_mean",
+    "funding_std",
+    "funding_mean_3d",
+    "funding_mean_7d",
+    "funding_mean_14d",
+    "funding_mean_30d",
+    "funding_z_30d"
+  ],
+  "ridge_alpha": 10.0,
+  "n_walk_forward_folds": 5,
+  "primary_metric": "MAE",
+  "secondary_metric": "RMSE",
+  "protocol_note": "All preprocessing fitted on training section only; ordered expanding-window CV.",
+  "limitation": "Funding/positioning source timing is only partially verified for true point-in-time replay."
+}
