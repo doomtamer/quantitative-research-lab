@@ -24,7 +24,7 @@ def candles():
     for index in range(202):
         day = warmup + timedelta(days=index)
         available = datetime.combine(day + timedelta(days=1), time(0, 30), UTC)
-        daily.append(DailyClose(day, 50 + index if index < 200 else 40, available))
+        daily.append(DailyClose(day, 50 + index if index < 200 else 40, available, "simulation_assumption"))
     hours = [
         MarketHour(START + timedelta(hours=index), 100, 100)
         for index in range((END - START) // timedelta(hours=1) + 1)
@@ -53,6 +53,32 @@ def test_does_not_execute_a_signal_at_or_after_the_fill(candles, delay):
         simulate(PERIOD, hours, daily, strategy="trend")
 
 
+def test_simulation_assumption_for_a_completed_session_is_accepted(candles):
+    daily, _ = candles
+    previous = daily[199]
+    assert previous.day == START.date() - timedelta(days=1)
+    assert previous.availability_basis == "simulation_assumption"
+    assert trend_signal({row.day: row for row in daily}, START) is True
+
+
+@pytest.mark.parametrize(("basis", "seconds_after_close"), [
+    ("", 1800),
+    (None, 1800),
+    ("verified", 1800),
+    ("simulation_assumption", -1),
+    ("historical_verified", -1),
+])
+def test_rejects_undefined_basis_or_timestamp_before_the_session_ends(candles, basis, seconds_after_close):
+    daily, _ = candles
+    previous_day = START.date() - timedelta(days=1)
+    history = {row.day: row for row in daily}
+    closed = datetime.combine(START.date(), time(), UTC)
+    history[previous_day] = replace(history[previous_day], availability_basis=basis,
+                                    available_at=closed + timedelta(seconds=seconds_after_close))
+    with pytest.raises(ValueError, match="Invalid or unavailable daily close"):
+        trend_signal(history, START)
+
+
 def test_missing_history_and_price_gaps_stop_the_run(candles):
     daily, hours = candles
     with pytest.raises(ValueError, match="Missing warmup"):
@@ -66,10 +92,10 @@ def test_rejects_e002_boundary_inputs(candles):
     protected = datetime(2025, 9, 13, 23, tzinfo=UTC)
     with pytest.raises(ValueError, match="E002 boundary"):
         simulate(Period(START, protected), hours, daily, strategy="trend")
-    extra = DailyClose(protected.date(), 100, protected)
+    extra = DailyClose(protected.date(), 100, protected, "simulation_assumption")
     with pytest.raises(ValueError, match="protected period"):
         simulate(PERIOD, hours, daily + [extra], strategy="trend")
-    late_publication = DailyClose(CUTOFF.date() - timedelta(days=1), 100, CUTOFF)
+    late_publication = DailyClose(CUTOFF.date() - timedelta(days=1), 100, CUTOFF, "simulation_assumption")
     with pytest.raises(ValueError, match="protected period"):
         simulate(PERIOD, hours, daily + [late_publication], strategy="trend")
     with pytest.raises(ValueError, match="protected period"):

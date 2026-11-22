@@ -24,6 +24,7 @@ class DailyClose:
     day: date
     close: float
     available_at: datetime
+    availability_basis: str
 
 
 @dataclass(frozen=True)
@@ -122,7 +123,8 @@ def trend_signal(history: dict[date, DailyClose], execution: datetime) -> bool:
             raise ValueError(f"Missing warmup or signal session {session}.")
         require_utc(item.available_at)
         closed = datetime.combine(session + DAY, time(), UTC)
-        if item.day != session or not closed <= item.available_at < execution or not positive(item.close):
+        if (item.day != session or not closed <= item.available_at < execution or not positive(item.close)
+                or item.availability_basis not in ("historical_verified", "simulation_assumption")):
             raise ValueError(f"Invalid or unavailable daily close for {session}.")
         closes.append(item.close)
     return closes[-1] > fsum(closes) / 200 and closes[-1] > closes[-21]
