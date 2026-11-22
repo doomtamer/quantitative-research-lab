@@ -1,0 +1,35 @@
+name: E005 independent research approval
+run-name: E005 dev/validation approval ${{ inputs.request_sha256 }}
+
+on:
+  workflow_dispatch:
+    inputs:
+      request_sha256:
+        description: SHA-256 of the reviewed E005 approval_request.json
+        required: true
+        type: string
+
+permissions: {}
+
+jobs:
+  attest:
+    if: github.repository == 'doomtamer/quantitative-research-lab' && github.ref == 'refs/heads/main' && github.run_attempt == '1'
+    runs-on: ubuntu-latest
+    environment: e005-research-approval
+    permissions:
+      contents: read
+      id-token: write
+      attestations: write
+    steps:
+      - name: Prepare the decision subject for this run
+        shell: bash
+        env:
+          REQUEST_SHA256: ${{ inputs.request_sha256 }}
+        run: |
+          [[ "$REQUEST_SHA256" =~ ^[a-f0-9]{64}$ ]]
+          [[ "$GITHUB_RUN_ID" =~ ^[1-9][0-9]{0,19}$ ]]
+          printf 'quantlab-e005-decision-v1\n%s\n%s\n' "$GITHUB_RUN_ID" "$REQUEST_SHA256" > e005-decision.txt
+      - name: Attest the decision subject
+        uses: actions/attest@1e69f48acb82d1966a394da916b4c1698aa569d6 # v4
+        with:
+          subject-path: e005-decision.txt
